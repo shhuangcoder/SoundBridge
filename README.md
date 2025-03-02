@@ -65,6 +65,7 @@ You need to first extract the audio file (.wav) from the video and then use the 
 
 
 ## 🪐 Checkpoint
-* You can download from [huggingface](https://huggingface.co/Sihong/SoundBridge)
+* You can download LLaMA from [huggingface](https://huggingface.co/meta-llama/Meta-Llama-3-8B) to generate the required audio description text based on the original video description.
+* You can download from [huggingface](https://huggingface.co/Sihong/SoundBridge) to test the model's performance.
 
 
