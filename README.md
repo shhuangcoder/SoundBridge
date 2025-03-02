@@ -36,5 +36,35 @@ pip install -r requirements.txt
 For the dataset, we provide the corresponding download link. Please follow the download instructions provided in the link to download the dataset.<br>
 EgoExoLearn: https://github.com/OpenGVLab/EgoExoLearn<br>
 CharadesEgo: https://prior.allenai.org/projects/charades-ego<br>
+You need to first extract the audio file (.wav) from the video and then use the BEATs model for audio feature extraction. Please call the BEATs model according to its requirements. [BEATS](https://github.com/microsoft/unilm.git)
+
+### The prepared dataset should be in the following structure.
+```
+.
+├── SoundBridge
+│   ├── model
+│   └── data
+│   └── results
+│   └── config
+│   └── annotations
+│   └── utils
+│   └── function
+├── datasets
+│   └── Charades_Ego
+│   │   └── videos
+│   │  └── audios
+│   └── EgoExoLearn
+│   │   └── videos
+│   │   └── audios
+├── ckpt
+│   └── Cha.pth
+│   └── EgoExo.pth
+├──README.md
+└── ···
+```
+
+
+## 🪐 Checkpoint
+* You can download from [huggingface](https://huggingface.co/Sihong/SoundBridge)
 
 
