@@ -1,12 +1,10 @@
 # **Sound Bridge：associating Egocentric and Exocentric videos via Audio Cues**<br>
-Almost there🤭
+
 
 
 
 ## 📢 News
-**[2025.3.10]** The code and dataset of related tasks has been released.
-
-**[2025.3.5]** The repository is public.
+**[2025.3.10]** The code of related tasks has been released.
 
 **[2025.2.28]** The repository is created.
 
@@ -35,6 +33,7 @@ conda activate SoundBridge
 ```shell
 pip install -r requirements.txt
 ```
+<a name="dataset"></a>
 
 ## 🗂️ Dataset
 For the dataset, we provide the corresponding download link. Please follow the download instructions provided in the link to download the dataset.<br>
@@ -66,9 +65,26 @@ You need to first extract the audio file (.wav) from the video and then use the 
 ├──README.md
 └── ···
 ```
+<a name="training"></a>
+
+## 🚀 Training
+
+```
+bash  
+```
 
 
-## 🪐 Checkpoint
+<a name="evaluation"></a>
+
+## ⭐ Evaluation
+
+```
+bash 
+bash 
+```
+
+
+## 🪐 Model Zoo
 * You can download LLaMA from [huggingface](https://huggingface.co/meta-llama/Meta-Llama-3-8B) to generate the required audio description text based on the original video description.
 * You can download from [huggingface](https://huggingface.co/Sihong/SoundBridge) to test the model's performance.
 
