@@ -10,6 +10,10 @@ Almost there🤭
 
 **[2025.2.28]** The repository is created.
 
+
+Official Pytorch Implementation of 'Sound Bridge：associating Egocentric and Exocentric videos via Audio Cues'
+<p align="center"><img width="650" src="images/model.png"></p>
+
 <a name="installation"></a>
 ## ⚙️ Installation
 1. Clone the repository from GitHub.
