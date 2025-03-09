@@ -67,7 +67,7 @@ You need to first extract the audio file (.wav) from the video and then use the 
 ```
 <a name="training"></a>
 
-## train
+## Train
 
 ```
 Download the Ego4d-pretrained [checkpoint](https://dl.fbaipublicfiles.com/lavila/checkpoints/dual_encoders/ego4d/clip_openai_timesformer_base.narrator_rephraser.ep_0001.md5sum_02dbb9.pth) from [LaViLA](https://github.com/facebookresearch/LaViLa), modify the config file (e.g. ./configs/train_egoonly.yml)
@@ -78,7 +78,7 @@ cross-modal retrieval:
 
 <a name="evaluation"></a>
 
-## test
+## Test
 
 ```
 cross-view association: python main.py --config ./configs/test.yml
