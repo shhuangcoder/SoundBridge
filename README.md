@@ -1,4 +1,4 @@
-# **Sound Bridge：association Egocentric and Exocentric videos via Audio Cues**<br>
+# **Sound Bridge：associating Egocentric and Exocentric videos via Audio Cues**<br>
 Almost there🤭
 
 
