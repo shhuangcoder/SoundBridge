@@ -73,7 +73,7 @@ You need to first extract the audio file (.wav) from the video and then use the 
 Download the Ego4d-pretrained [checkpoint](https://dl.fbaipublicfiles.com/lavila/checkpoints/dual_encoders/ego4d/clip_openai_timesformer_base.narrator_rephraser.ep_0001.md5sum_02dbb9.pth) from [LaViLA](https://github.com/facebookresearch/LaViLa), modify the config file (e.g. ./configs/train_egoonly.yml)
 resume: /path/to/your/pretrained_checkpoint/
 cross-view association: python -m torch.distributed.launch --nproc_per_node=NUM_GPU main.py --config ./configs/train_egoexo.yml
-cross-modal retrieval: 
+cross-modal retrieval: python -m torch.distributed.launch --nproc_per_node=NUM_GPU main_retrieval.py --config ./configs/train_egoexo.yml
 ```
 
 <a name="evaluation"></a>
@@ -82,7 +82,7 @@ cross-modal retrieval:
 
 ```
 cross-view association: python main.py --config ./configs/test.yml
-cross-modal retrieval:
+cross-modal retrieval: python main_retrieval.py --config ./configs/test.yml
 ```
 
 
