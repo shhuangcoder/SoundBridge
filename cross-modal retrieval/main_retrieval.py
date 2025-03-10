@@ -425,9 +425,6 @@ def validate_v2v_mcq(val_loader, model, use_half=False, cfg=None, args=None, epo
             all_scene_embeddings.append(scene_query_features.cpu())
             
             for j in range(batch_size):
-                similarity_matrix = torch.matmul(image_query_features[j], image_options_features[j].T)
-                similarity_matrix = similarity_matrix.cpu().detach()
-                all_preds.append(similarity_matrix)
                 
                 similarity_matrix_crossModal_T2V = torch.matmul(text_features[j], image_options_features[j].mT)   #修改此处
                 similarity_matrix_crossModal_T2V = similarity_matrix_crossModal_T2V.cpu().detach()
@@ -457,7 +454,6 @@ def validate_v2v_mcq(val_loader, model, use_half=False, cfg=None, args=None, epo
             total_samples_scene += scene_labels.size(0)
 
         all_uids = torch.cat(all_uids)
-        all_preds = torch.stack(all_preds)
         all_preds_crossModal_T2V = torch.stack(all_preds_crossModal_T2V)
         all_preds_crossModal_V2T = torch.stack(all_preds_crossModal_V2T)
         all_preds_crossModal_A2T = torch.stack(all_preds_crossModal_A2T)
@@ -466,9 +462,9 @@ def validate_v2v_mcq(val_loader, model, use_half=False, cfg=None, args=None, epo
         all_scene_labels = torch.cat(all_scene_labels)
         all_pre_scenes = torch.cat(all_pre_scenes)
         
-        save_pred_results(all_uids, all_preds, all_preds_crossModal_T2V, all_preds_crossModal_V2T, all_preds_crossModal_A2T, all_gts, all_scene_labels, cfg)
+        save_pred_results(all_uids, all_preds_crossModal_T2V, all_preds_crossModal_V2T, all_preds_crossModal_A2T, all_gts, all_scene_labels, cfg)
         
-        metrics = egomcq_accuracy_metrics(all_preds, all_preds_crossModal_T2V, all_preds_crossModal_V2T, all_preds_crossModal_A2T, all_gts, all_types, all_scene_labels)
+        metrics = egomcq_accuracy_metrics(all_preds_crossModal_T2V, all_preds_crossModal_V2T, all_preds_crossModal_A2T, all_gts, all_types, all_scene_labels)
         print(metrics)
         return metrics
 
@@ -497,8 +493,6 @@ def save_pred_results(uids, preds, preds_crossModal_T2V, preds_crossModal_V2T, p
 def egomcq_accuracy_metrics(preds, preds_crossModal_T2V, preds_crossModal_V2T, preds_crossModal_A2T, labels, types, scene_labels):
     metrics = {}
     type_list = torch.unique(types)
-    group_list = ['Ego->Exo', 'Exo->Ego']
-    top_k_list = [1, 5, 10]
     
     for type_i, group_i in zip(type_list, group_list):
         for top_k in top_k_list:
