@@ -55,13 +55,16 @@ You need to first extract the audio file (.wav) from the video and then use the 
 ├── datasets
 │   └── Charades_Ego
 │   │   └── videos
-│   │  └── audios
+│   │   └── audios
+│   │   └── audios_features
 │   └── EgoExoLearn
 │   │   └── videos
 │   │   └── audios
+│   │   └── audios_features
 ├── ckpt
 │   └── Cha.pth
 │   └── EgoExo.pth
+│   └── clip_openai_timesformer_base.narrator_rephraser.ep_0001.md5sum_02dbb9.pth
 ├──README.md
 └── ···
 ```
