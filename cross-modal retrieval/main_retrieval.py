@@ -426,15 +426,15 @@ def validate_v2v_mcq(val_loader, model, use_half=False, cfg=None, args=None, epo
             
             for j in range(batch_size):
                 
-                similarity_matrix_crossModal_T2V = torch.matmul(text_features[j], image_options_features[j].mT)   #修改此处
+                similarity_matrix_crossModal_T2V = torch.matmul(text_features[j], image_options_features[j].mT)
                 similarity_matrix_crossModal_T2V = similarity_matrix_crossModal_T2V.cpu().detach()
                 all_preds_crossModal_T2V.append(similarity_matrix_crossModal_T2V)
                 
-                similarity_matrix_crossModal_V2T = torch.matmul(image_query_features[j], text_options_features[j].mT)   #修改此处
+                similarity_matrix_crossModal_V2T = torch.matmul(image_query_features[j], text_options_features[j].mT)
                 similarity_matrix_crossModal_V2T = similarity_matrix_crossModal_V2T.cpu().detach()
                 all_preds_crossModal_V2T.append(similarity_matrix_crossModal_V2T)
                 
-                similarity_matrix_crossModal_A2T = torch.matmul(audio_features[j], text_options_features[j].mT)   #修改此处
+                similarity_matrix_crossModal_A2T = torch.matmul(audio_features[j], text_options_features[j].mT)
                 similarity_matrix_crossModal_A2T = similarity_matrix_crossModal_A2T.cpu().detach()
                 all_preds_crossModal_A2T.append(similarity_matrix_crossModal_A2T)
 
