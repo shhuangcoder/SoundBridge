@@ -14,7 +14,7 @@ data:
   patch_size: 16
   
 model:
-  ### this is for retriever ###
+  ### this is for association ###
   name: CLIP_OPENAI_TIMESFORMER_BASE
   norm_embed: true
   clip_length: ${data.clip_length}
