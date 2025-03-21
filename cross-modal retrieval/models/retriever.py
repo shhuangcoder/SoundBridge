@@ -57,16 +57,16 @@ class CLIP(nn.Module):
         
         self.cross_attn_fusion_visual = nn.TransformerEncoderLayer(
             d_model=embed_dim,   
-            nhead=4,             
-            dim_feedforward=embed_dim * 4,  
+            nhead=2,             
+            dim_feedforward=embed_dim * 2,  
             dropout=0.1,         
             activation="gelu"    
         )
         
         self.cross_attn_fusion_text = nn.TransformerEncoderLayer(
             d_model=embed_dim,   
-            nhead=4,             
-            dim_feedforward=embed_dim * 4,  
+            nhead=2,             
+            dim_feedforward=embed_dim * 2,  
             dropout=0.1,         
             activation="gelu"    
         )
@@ -140,8 +140,8 @@ class CLIP(nn.Module):
         audio_embed = audio_features.unsqueeze(0)
         image_embed = x.unsqueeze(0)
         visual_audio_embed, _ = self.cross_attn_image(query=audio_embed, key=image_embed, value=image_embed)
-        visual_audio_embed = self.cross_attn_fusion_visual(visual_audio_embed)
-        visual_audio_embed = visual_audio_embed.sequeeze(0)
+        visual_audio_embed = self.cross_attn_fusion_visual(visual_audio_embed + audio_embed)
+        visual_audio_embed = torch.mean(visual_audio_embed, dim=0)
         
         scene_x = visual_audio_embed
 
@@ -171,8 +171,8 @@ class CLIP(nn.Module):
         x1 = x1.unsqueeze(0)
         x2 = x2.unsqueeze(0)
         visual_audio_embed, _ = self.cross_attn_text(query=x2, key=x1, value=x1)
-        visual_audio_embed = self.cross_attn_fusion_text(visual_audio_embed)
-        visual_audio_embed = visual_audio_embed.sequeeze(0)
+        visual_audio_embed = self.cross_attn_fusion_text(visual_audio_embed + x2)
+        visual_audio_embed = torch.mean(visual_audio_embed, dim=0)
         x1 = x1.squeeze(0)
         x2 = x2.squeeze(0)
 
