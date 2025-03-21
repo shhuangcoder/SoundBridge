@@ -186,7 +186,6 @@ class CLIP(nn.Module):
         
         audio_features = self.ffn2(audio_features)
         audio_features = torch.mean(audio_features, dim=1)
-        audio_features = self.standardize(audio_features)
 
         text_embed, audio_embed = self.encode_text(text, text_audio, audio_features, use_checkpoint=use_checkpoint)
         image_embed, scene_embed = self.encode_image(image, text_embed, audio_features, env_features, use_checkpoint=use_checkpoint)
