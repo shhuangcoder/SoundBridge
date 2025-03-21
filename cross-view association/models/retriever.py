@@ -172,7 +172,7 @@ class CLIP(nn.Module):
         x1 = x1.unsqueeze(0)
         x2 = x2.unsqueeze(0)
         visual_audio_embed, _ = self.cross_attn_text(query=x2, key=x1, value=x1)
-        visual_audio_embed = self.cross_attn_fusion_text(visual_audio_embed + audio_embed)
+        visual_audio_embed = self.cross_attn_fusion_text(visual_audio_embed + x2)
         visual_audio_embed = torch.mean(visual_audio_embed, dim=0)
 
         audio_features = x2
