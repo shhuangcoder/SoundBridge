@@ -58,9 +58,13 @@ You need to first extract the audio file (.wav) from the video and then use the 
 │   │   └── audios
 │   │   └── audios_features
 ├── ckpt
-│   └── Cha.pth
-│   └── EgoExo.pth
-│   └── clip_openai_timesformer_base.narrator_rephraser.ep_0001.md5sum_02dbb9.pth
+│   └── Cha
+│   │   └── association.pt
+│   │   └── retrieval.pt
+│   └── EgoExo
+│   │   └── association.pt
+│   │   └── retrieval.pt
+│   └── clip_openai_timesformer_base.narrator_rephraser.ep_0001.md5sum_02dbb9.pt
 ├──README.md
 └── ···
 ```
