@@ -6,7 +6,6 @@ import numpy as np
 import os.path as osp
 import pickle
 import random
-
 import decord
 import pandas as pd
 import torch
@@ -17,11 +16,8 @@ import io,os
 from numpy.random import default_rng
 rng = default_rng()
 import torch.nn as nn
-
 from .data_utils import video_loader
-
 import torch.nn.functional as F
-
 from sklearn.preprocessing import LabelEncoder
 
 class OurTrainDataset(torch.utils.data.Dataset):
@@ -51,7 +47,6 @@ class OurTrainDataset(torch.utils.data.Dataset):
         }
 
         assert self.dataset in ['ourdata_ego', 'ourdata_exo', 'ourdata_egoexo']
-        
 
         self.ego_samples = pd.read_csv(self.ego_metadata)
         self.exo_samples = pd.read_csv(self.exo_metadata)
