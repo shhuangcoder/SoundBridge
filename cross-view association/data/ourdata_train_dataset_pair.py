@@ -56,12 +56,10 @@ class OurTrainDataset(torch.utils.data.Dataset):
         self.ego_samples = pd.read_csv(self.ego_metadata)
         self.exo_samples = pd.read_csv(self.exo_metadata)
 
-
         self.ego_to_exo_map = {row['annotation_id']: row for _, row in self.exo_samples.iterrows()}
 
         self.ego_number = len(self.ego_samples)
         
-       
         self.samples = {}
         if self.dataset == 'ourdata_ego':
             self.samples = {0: self.ego_samples}
@@ -72,7 +70,6 @@ class OurTrainDataset(torch.utils.data.Dataset):
                 0: self.ego_samples,
                 1: self.exo_samples,
             }
-
         
         all_scenes = pd.concat([self.ego_samples['scenario'], self.exo_samples['scenario']])
         self.label_encoder = LabelEncoder()
