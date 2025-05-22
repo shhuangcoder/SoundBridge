@@ -3,8 +3,6 @@
 Official Pytorch Implementation of 'Sound Bridge：Associating Egocentric and Exocentric videos via Audio Cues'
 <p align="center"><img width="650" src="images/model.png"></p>
 
-[`Paper`](https://ai/)
-
 ## 📢 News
 
 
