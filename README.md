@@ -96,13 +96,12 @@ test: python main_retrieval.py --config ./configs/test.yml
 ## Citation
 If you find the repository or the paper useful, please use the following entry for citation.
 ```
-@inproceedings{
-xxx2025yyy,
-title={Sound Bridge：Associating Egocentric and Exocentric videos via Audio Cues},
-author={Sihong Huang,Jiaxin Wu,Xiaoyong Wei,Yi Cai,Dongmei Jiang,Yaowei Wang},
-booktitle={CVPR2025},
-year={2025},
-url={https://arxiv.org/}
+@inproceedings{huang2025sound,
+  title={Sound Bridge: Associating Egocentric and Exocentric Videos via Audio Cues},
+  author={Huang, Sihong and Wu, Jiaxin and Wei, Xiaoyong and Cai, Yi and Jiang, Dongmei and Wang, Yaowei},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={28942--28951},
+  year={2025}
 }
 ```
 
