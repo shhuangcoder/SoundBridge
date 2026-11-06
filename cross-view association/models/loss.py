@@ -108,6 +108,30 @@ class CLIPLoss(nn.Module):
         return {'loss': loss, 'clip_loss': loss, 'clip_acc': acc}
 
     def forward(self, outputs):
+        if 'pair_batch_size' in outputs:
+            b = outputs['pair_batch_size']
+            ego = F.normalize(outputs['image_embed'][:b].float(), dim=-1)
+            exo = F.normalize(outputs['image_embed'][b:].float(), dim=-1)
+            text = F.normalize(outputs['text_embed'][:b].float(), dim=-1)
+
+            if self.world_size > 1:
+                all_text = torch.cat(torch.distributed.nn.all_gather(text), dim=0)
+                labels = torch.arange(b, device=ego.device) + self.rank * b
+            else:
+                all_text = text
+                labels = torch.arange(b, device=ego.device)
+
+            if all_text.shape[0] < 2:
+                raise ValueError('At least two Ego-Exo pairs are required for contrastive loss')
+
+            ego2text_loss = F.cross_entropy(ego @ all_text.T / 0.07, labels)
+            exo2text_loss = F.cross_entropy(exo @ all_text.T / 0.07, labels)
+            return {
+                'loss': ego2text_loss + exo2text_loss,
+                'ego2text_loss': ego2text_loss,
+                'exo2text_loss': exo2text_loss,
+            }
+
         loss = {}
         itcloss = self.forward_loss(outputs['image_embed'], outputs['text_embed'], outputs['logit_scale'])
         atcloss = self.forward_loss(outputs['audio_embed'], outputs['text_embed'], outputs['logit_scale'])
